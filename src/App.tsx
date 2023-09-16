@@ -1,16 +1,20 @@
 import { Outlet, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import Navbar from './components/Navbar';
+import Dashboard from './pages/dashboard/Dashboard';
+import Expense from './pages/expense/Expense';
+import Notes from './pages/notes/Notes';
+import Schedule from './pages/schedule/Schedule';
 
 function App() {
 	return (
 		<>
 			<Header />
-			<Navbar />
-
 			<Routes>
 				<Route path='/' element={<Outlet />}>
-					{/* <Route  */}
+					<Route index element={<Dashboard />} />
+					<Route path='notes' element={<Notes />} />
+					<Route path='schedules' element={<Schedule />} />
+					<Route path='expenses' element={<Expense />} />
 				</Route>
 			</Routes>
 		</>

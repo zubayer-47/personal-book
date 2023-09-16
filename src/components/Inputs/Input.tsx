@@ -6,11 +6,11 @@ type InputProp = {
 	name: string;
 	handler: InputHandler;
 	type?: string;
+	title?: string;
 	hint?: string;
 	value?: string | null;
 	isLoading?: boolean;
 	isRequired?: boolean;
-	showLabel?: boolean;
 	error?: string | null;
 	notMatched?: boolean;
 };
@@ -19,29 +19,29 @@ const Input = ({
 	name,
 	handler,
 	type = 'text',
+	title = '',
 	hint = '',
 	value,
 	isLoading = false,
 	isRequired = false,
-	showLabel = false,
 	error = '',
 }: InputProp) => {
 	return (
-		<div className='bg-transparent flex-1'>
-			{showLabel && (
+		<div className='flex-1'>
+			{title && (
 				<label
 					htmlFor={name}
 					className={`capitalize font-semibold text-sm  text-slate-600 ${
 						!isRequired ? '' : "after:content-['*'] after:text-red-500"
 					}`}
 				>
-					{hint}
+					{title}
 				</label>
 			)}
 			<input
 				type={type}
 				name={name}
-				className='w-full p-3 rounded-lg bg-transparent outline-none tracking-wider border border-indigo-200'
+				className='w-full px-4 py-2 rounded-full bg-white outline-none tracking-wider'
 				placeholder={hint}
 				value={value || ''}
 				onChange={handler}
@@ -61,10 +61,10 @@ export default Input;
 export const PasswordInput = ({
 	name,
 	handler,
-	hint = '',
+	title,
+	hint,
 	value,
 	isLoading = false,
-	showLabel = false,
 	isRequired,
 	error = '',
 	notMatched,
@@ -75,14 +75,14 @@ export const PasswordInput = ({
 
 	return (
 		<div className='bg-transparent'>
-			{showLabel && (
+			{title && (
 				<label
 					htmlFor={name}
 					className={`capitalize font-semibold text-sm  text-slate-600 ${
 						!isRequired ? '' : "after:content-['*'] after:text-red-500"
 					}`}
 				>
-					{hint}
+					{title}
 				</label>
 			)}
 			<div

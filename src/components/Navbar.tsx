@@ -1,47 +1,45 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ContainerLayout from './Layouts/ContainerLayout';
+import NotifyBadge from './NotifyBadge';
 
 const Navbar = () => {
 	return (
 		<ContainerLayout>
-			<div className='-mt-12 flex justify-center items-center font-inter'>
-				<h1 className='w-7 h-7 rounded-full bg-primary-200 mr-3'></h1>
-
-				<ul className='flex items-center gap-3'>
+			<div className='mb-3 flex items-center justify-center font-inter'>
+				<div className='w-9 h-9 rounded-full bg-primary-100 mr-3' />
+				<ul className='flex items-center gap-3 text-slate-600'>
 					<li>
-						<Link
-							to='/profiles?sc=dashboard'
-							className='bg-white px-3.5 py-1.5 rounded-3xl inline-block active'
+						<NavLink
+							to='/'
+							className='bg-white px-3.5 py-1.5 rounded-3xl inline-block'
 						>
 							Dashboard
-						</Link>
+						</NavLink>
 					</li>
 					<li>
-						<Link
-							to='/profiles?sc=notes'
+						<NavLink
+							to='/notes'
 							className='bg-white px-3.5 py-1.5 rounded-3xl inline-block'
 						>
 							Notes
-						</Link>
+						</NavLink>
 					</li>
 					<li>
-						<Link
-							to='/profiles?sc=schedules'
+						<NavLink
+							to='/schedules'
 							className='bg-white px-3.5 py-1.5 rounded-3xl inline-block relative'
 						>
+							<NotifyBadge count={12} />
 							Schedules
-							<span className='text-xs text-primary-100 bg-yellow h-6 w-6 rounded-full flex justify-center items-center absolute -top-2.5 -right-2'>
-								7
-							</span>
-						</Link>
+						</NavLink>
 					</li>
 					<li>
-						<Link
-							to='/profiles?sc=expense'
+						<NavLink
+							to='/expenses'
 							className='bg-white px-3.5 py-1.5 rounded-3xl inline-block'
 						>
-							Expense
-						</Link>
+							Expenses
+						</NavLink>
 					</li>
 				</ul>
 			</div>

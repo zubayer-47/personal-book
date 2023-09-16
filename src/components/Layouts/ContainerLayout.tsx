@@ -5,7 +5,7 @@ type Props = {
 };
 
 const ContainerLayout: FC<Props> = ({ children }) => {
-	return <div className='container mx-auto'>{children}</div>;
+	return <div className='container mx-auto px-2.5 sm:px-0'>{children}</div>;
 };
 
 export default ContainerLayout;

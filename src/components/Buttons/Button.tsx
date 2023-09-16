@@ -4,8 +4,6 @@ import { FiRefreshCw } from 'react-icons/fi';
 type BtnProp = ButtonHTMLAttributes<HTMLButtonElement> & {
 	title: string;
 	handler?: () => void;
-	type?: 'button' | 'submit';
-	transparent?: boolean;
 	isDisabled?: boolean;
 	isLoading?: boolean;
 };
@@ -13,21 +11,15 @@ type BtnProp = ButtonHTMLAttributes<HTMLButtonElement> & {
 const Button = ({
 	title,
 	handler,
-	type = 'button',
-	transparent,
 	isDisabled,
 	isLoading,
 	...props
 }: BtnProp) => {
 	return (
 		<button
-			type={type}
-			className={`px-4 p-2 rounded-lg outline-none tracking-wide ${
+			type='button'
+			className={`px-4 p-2 rounded-full outline-none tracking-wide font-medium bg-yellow text-primary-200 ${
 				(isLoading || isDisabled) && 'opacity-60'
-			} ${
-				transparent
-					? 'bg-transparent text-indigo-500 hover:underline'
-					: 'bg-indigo-500 text-white'
 			}`}
 			onClick={handler}
 			disabled={isLoading || isDisabled}

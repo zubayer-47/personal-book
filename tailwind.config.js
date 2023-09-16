@@ -15,10 +15,10 @@ export default {
 				// badge: '#58D7FF',
 				// foreground: '#EDEDED',
 
-				// bg: '#e3eef9',
+				background: '#e3eef9',
 				primary: {
 					100: '#1874CF',
-					200: '#e3eef9',
+					200: '#034687',
 				},
 				yellow: '#f7df05',
 				red: '#e12d35',
