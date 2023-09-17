@@ -14,13 +14,17 @@ const ModalBox: FC<ModalBoxProps> = ({
 	overlyBg,
 }) => {
 	return (
-		<div className='flex justify-center items-center overflow-y-auto fixed inset-0 outline-none z-30 focus:outline-none mx-5'>
+		<div className='flex justify-center items-center overflow-y-auto fixed inset-0 outline-none z-30 focus:outline-none px-5 bg-black/30'>
 			<button
 				type='button'
 				onClick={onClose}
 				className={` fixed inset-0 ${!overlyBg ? '' : overlyBg}`}
 			></button>
-			<div className={`relative my-6 mx-auto ${classes}`}>{children}</div>
+			<div
+				className={`relative my-6 mx-auto z-10 rounded-lg overflow-hidden bg-background ${classes}`}
+			>
+				{children}
+			</div>
 		</div>
 	);
 };

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { InputHandler } from '../../types/custom';
 
@@ -8,11 +8,14 @@ type InputProp = {
 	type?: string;
 	title?: string;
 	hint?: string;
-	value?: string | null;
+	value?: string | number | null;
 	isLoading?: boolean;
 	isRequired?: boolean;
 	error?: string | null;
 	notMatched?: boolean;
+	wrapperCss?: string;
+	inputCss?: string;
+	children?: ReactNode;
 };
 
 const Input = ({
@@ -25,6 +28,8 @@ const Input = ({
 	isLoading = false,
 	isRequired = false,
 	error = '',
+	inputCss,
+	children,
 }: InputProp) => {
 	return (
 		<div className='flex-1'>
@@ -38,17 +43,32 @@ const Input = ({
 					{title}
 				</label>
 			)}
-			<input
-				type={type}
-				name={name}
-				className='w-full px-4 py-2 rounded-full bg-white outline-none tracking-wider'
-				placeholder={hint}
-				value={value || ''}
-				onChange={handler}
-				autoComplete='off'
-				disabled={isLoading}
-				required={isRequired}
-			/>
+
+			<div className={`relative`}>
+				{!children ? null : (
+					<label
+						htmlFor={name}
+						className='absolute inset-y-0 left-0 flex items-center p-2.5'
+					>
+						{children}
+					</label>
+				)}
+				<input
+					type={type}
+					name={name}
+					id={name}
+					className={`bg-white flex-1 w-full pr-2 py-3 outline-none tracking-wider pl-10 ${
+						inputCss || 'rounded-full'
+					}`}
+					placeholder={hint}
+					value={value || ''}
+					onChange={handler}
+					autoComplete='off'
+					disabled={isLoading}
+					required={isRequired}
+				/>
+			</div>
+
 			{!error ? null : (
 				<p className='ml-2 text-sm text-red-400 tracking-wide'>{error}</p>
 			)}

@@ -3,6 +3,9 @@ export default {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
+			width: {
+				102: '30rem',
+			},
 			fontFamily: {
 				inter: ["'Inter', sans-serif"],
 			},
