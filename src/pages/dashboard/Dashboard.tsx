@@ -9,9 +9,9 @@ const Dashboard = () => {
 			<div className='flex flex-col gap-5'>
 				<div className='flex items-stretch gap-5 font-inter'>
 					<div className='flex-1 bg-white rounded-md'></div>
-					<div className='flex flex-col items-center bg-yellow text-primary-200 tracking-wide px-3 py-1.5 rounded-md'>
+					<div className='flex flex-col items-center bg-yellow text-primary-200 px-3 py-1.5 rounded-md'>
 						<div className='flex-1 px-3 py-1 text-6xl font-medium'>16</div>
-						<span className='uppercase'>september</span>
+						<span className='uppercase tracking-wide'>september</span>
 					</div>
 				</div>
 				<div className='flex items-stretch gap-5'>
