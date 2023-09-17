@@ -83,6 +83,11 @@ const Expense = () => {
 		}));
 	};
 
+	const handleCreate = () => {
+		// make api call here
+		console.log({ expenses });
+	};
+
 	return (
 		<>
 			<ContainerLayout>
@@ -178,7 +183,8 @@ const Expense = () => {
 								<Input
 									name='notes'
 									hint='Notes...'
-									handler={() => undefined}
+									handler={handleNote}
+									value={expenses.note}
 									inputCss='border border-primary-100/20 focus:border-primary-200 rounded-md'
 								>
 									<FiFileText className='w-5 h-5 text-primary-200' />
@@ -221,7 +227,8 @@ const Expense = () => {
 								<Input
 									name='notes'
 									hint='Notes...'
-									handler={() => undefined}
+									handler={handleNote}
+									value={expenses.note}
 									inputCss='border border-primary-100/20 focus:border-primary-200 rounded-md'
 								>
 									<FiFileText className='w-5 h-5 text-primary-200' />
@@ -240,7 +247,7 @@ const Expense = () => {
 									tk
 								</p>
 							)}
-							<Button title='Create Expense' />
+							<Button title='Create Expense' handler={handleCreate} />
 						</div>
 					</div>
 				</Modal>
