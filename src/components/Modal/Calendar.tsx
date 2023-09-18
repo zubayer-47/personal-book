@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 import React, { useCallback, useState } from 'react';
 import { months } from '../../types/custom';
 
@@ -85,6 +84,13 @@ const Calendar: React.FC<Props> = ({ initialDate = new Date(), callback }) => {
 		return daysArr;
 	}, [currentDate]);
 
+	const formateDate = (date: Date) => {
+		const month = months[date.getMonth()];
+		const year = date.getFullYear();
+
+		return `${month} ${year}`;
+	};
+
 	return (
 		<div className='w-full bg-white rounded-lg p-6 max-w-sm absolute top-28 right-16 shadow-2xl z-10'>
 			<div className='flex items-center justify-between mb-4'>
@@ -102,9 +108,7 @@ const Calendar: React.FC<Props> = ({ initialDate = new Date(), callback }) => {
 						{'<'}
 					</button>
 				</div>
-				<h2 className='text-2xl font-semibold'>
-					{format(currentDate, 'MMMM yyyy')}
-				</h2>
+				<h2 className='text-2xl font-semibold'>{formateDate(currentDate)}</h2>
 				<div>
 					<button
 						onClick={nextMonth}
