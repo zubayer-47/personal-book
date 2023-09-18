@@ -8,6 +8,7 @@ type Props = {
 	cost: number;
 	openWidget: boolean;
 	handleWidgetModal: ButtonClickHandler;
+	// deleteExpense: ButtonClickHandler;
 };
 
 const TransactionItem = ({
@@ -17,7 +18,8 @@ const TransactionItem = ({
 	cost,
 	openWidget,
 	handleWidgetModal,
-}: Props) => {
+}: // deleteExpense,
+Props) => {
 	return (
 		<div className='flex items-center justify-between rounded bg-white px-3 py-1.5 tracking-wide'>
 			<div>
@@ -35,6 +37,7 @@ const TransactionItem = ({
 				<button type='button' onClick={handleWidgetModal}>
 					<FiMoreVertical className='w-5 h-5 text-slate-400' />
 				</button>
+
 				{openWidget && (
 					<div className='absolute right-6 -top-3 bg-background shadow-md z-10 flex gap-1 items-center'>
 						<button
@@ -47,6 +50,7 @@ const TransactionItem = ({
 						<div className='h-6 border-r border-primary-200/30 inline-block'></div>
 						<button
 							type='button'
+							// onClick={deleteExpense}
 							className='flex items-center gap-2 px-3 py-1.5 w-full text-left hover:bg-slate-300/70'
 						>
 							<FiTrash className='w-5 h-5 text-red' />
