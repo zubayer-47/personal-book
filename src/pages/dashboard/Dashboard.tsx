@@ -1,11 +1,11 @@
 import ContainerLayout from '../../components/Layouts/ContainerLayout';
 import ScheduleItem from '../../components/widgets/ScheduleItem';
 import SectionLabel from '../../components/widgets/SectionLabel';
-import TransectionItem from '../../components/widgets/TransectionItem';
+import TransactionItem from '../../components/widgets/TransactionItem';
 
 const Dashboard = () => {
 	return (
-		<ContainerLayout>
+		<ContainerLayout isPB>
 			<div className='flex flex-col gap-5'>
 				<div className='flex items-stretch gap-5 font-inter'>
 					<div className='flex-1 bg-white rounded-md'></div>
@@ -35,19 +35,19 @@ const Dashboard = () => {
 
 			<SectionLabel title='Transection' link='/expenses' linkTitle='See More' />
 			<div className='flex flex-col gap-2'>
-				<TransectionItem
+				<TransactionItem
 					title='Buy Coffie'
 					timestamp='2 minutes ago'
 					reason='expense'
 					cost={360}
 				/>
-				<TransectionItem
+				<TransactionItem
 					title='Buy Coffie'
 					timestamp='2 minutes ago'
 					reason='expense'
 					cost={360}
 				/>
-				<TransectionItem
+				<TransactionItem
 					title='Sellary'
 					timestamp='45 minutes ago'
 					reason='income'

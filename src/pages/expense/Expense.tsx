@@ -14,11 +14,43 @@ import Input from '../../components/Inputs/Input';
 import ContainerLayout from '../../components/Layouts/ContainerLayout';
 import Modal from '../../components/Modal/Modal';
 import SectionLabel from '../../components/widgets/SectionLabel';
-import TransectionItem from '../../components/widgets/TransectionItem';
+import TransactionItem from '../../components/widgets/TransactionItem';
 import useModal from '../../hooks/useModal';
 import { InputHandler, InputType } from '../../types/custom';
 
 const tabs = ['single', 'multiple'];
+
+type ExpenseDemoType = {
+	id: string;
+	title: string;
+	timestamp: string;
+	reason: 'expense' | 'income';
+	cost: number;
+};
+
+const expenseArr: ExpenseDemoType[] = [
+	{
+		id: uuid(),
+		title: 'Buy Coffee',
+		timestamp: '2 minutes ago',
+		reason: 'expense',
+		cost: 360,
+	},
+	{
+		id: uuid(),
+		title: 'Buy Coffee',
+		timestamp: '2 minutes ago',
+		reason: 'expense',
+		cost: 360,
+	},
+	{
+		id: uuid(),
+		title: 'Buy Coffee',
+		timestamp: '2 minutes ago',
+		reason: 'expense',
+		cost: 360,
+	},
+];
 
 interface ReceiptType {
 	id: string;
@@ -33,11 +65,18 @@ interface ExpenseType {
 
 const Expense = () => {
 	const { modal, handleModal } = useModal();
+	const [expenseId, setExpenseId] = useState('');
 	const [activeTab, setActiveTab] = useState(tabs[0]);
 	const [expenses, setExpenses] = useState<ExpenseType>({
 		receipts: [{ id: uuid(), receipt: '', amount: 0 }],
 		note: '',
 	});
+
+	const handleWidgetModal = (id: string) => {
+		if (id === expenseId) return setExpenseId('');
+
+		setExpenseId(id);
+	};
 
 	const handleTabs = (tab: string) => {
 		setActiveTab(tab);
@@ -90,60 +129,76 @@ const Expense = () => {
 
 	return (
 		<>
-			<ContainerLayout>
+			<ContainerLayout isPB>
 				<div className='flex items-stretch gap-3'>
-					<Button title='New Transection' handler={handleModal} />
+					<Button title='New Transaction' handler={handleModal} />
 					<Input
 						name='search-tran'
-						hint='Search transections...'
+						hint='Search transactions...'
 						handler={() => undefined}
 					>
 						<FiSearch className='w-5 h-5' />
 					</Input>
 				</div>
 
-				<SectionLabel title='Recent Transection' />
+				<SectionLabel title='Recent Transaction' />
 				<div className='flex flex-col gap-2'>
-					<TransectionItem
+					{expenseArr.map((expense) => (
+						<TransactionItem
+							key={expense.id}
+							title={expense.title}
+							timestamp={expense.timestamp}
+							reason={expense.reason}
+							cost={expense.cost}
+							openWidget={expenseId === expense.id}
+							handleWidgetModal={() => handleWidgetModal(expense.id)}
+						/>
+					))}
+					{/* <TransactionItem
 						title='Buy Coffie'
 						timestamp='2 minutes ago'
 						reason='expense'
 						cost={360}
 					/>
-					<TransectionItem
+					<TransactionItem
 						title='Buy Coffie'
 						timestamp='2 minutes ago'
 						reason='expense'
 						cost={360}
-					/>
-					<TransectionItem
-						title='Buy Coffie'
-						timestamp='2 minutes ago'
-						reason='expense'
-						cost={360}
-					/>
+					/> */}
 				</div>
 
-				<SectionLabel title='Transection History' link='/expenses?list=all' />
+				<SectionLabel title='Transaction History' link='/expenses?list=all' />
 				<div className='flex flex-col gap-2'>
-					<TransectionItem
+					{expenseArr.map((expense) => (
+						<TransactionItem
+							key={expense.id}
+							title={expense.title}
+							timestamp={expense.timestamp}
+							reason={expense.reason}
+							cost={expense.cost}
+							openWidget={expenseId === expense.id}
+							handleWidgetModal={() => handleWidgetModal(expense.id)}
+						/>
+					))}
+					{/* <TransactionItem
 						title='Buy Coffie'
 						timestamp='2 minutes ago'
 						reason='expense'
 						cost={360}
 					/>
-					<TransectionItem
+					<TransactionItem
 						title='Buy Coffie'
 						timestamp='2 minutes ago'
 						reason='expense'
 						cost={360}
 					/>
-					<TransectionItem
+					<TransactionItem
 						title='Sellary'
 						timestamp='45 minutes ago'
 						reason='income'
 						cost={25000}
-					/>
+					/> */}
 				</div>
 			</ContainerLayout>
 

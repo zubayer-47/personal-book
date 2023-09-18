@@ -15,7 +15,7 @@ const Schedule = () => {
 
 	return (
 		<>
-			<ContainerLayout>
+			<ContainerLayout isPB>
 				<div className='flex items-stretch gap-3'>
 					<Button title='New Schedule' handler={handleScheduleModal} />
 					<Input
