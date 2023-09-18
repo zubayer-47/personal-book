@@ -1,18 +1,42 @@
+import { useState } from 'react';
 import ContainerLayout from '../../components/Layouts/ContainerLayout';
+import Calendar from '../../components/Modal/Calendar';
 import ScheduleItem from '../../components/widgets/ScheduleItem';
 import SectionLabel from '../../components/widgets/SectionLabel';
 import TransactionItem from '../../components/widgets/TransactionItem';
+import { months } from '../../types/custom';
+
+const date = new Date();
 
 const Dashboard = () => {
+	const [calenderVisibility, setCalendarVisibility] = useState(false);
+	const [selectedDate, setSelectedDate] = useState<string[]>([
+		months[date.getMonth()],
+		date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`,
+	]);
+
+	const toggleCalenderVisibility = () => {
+		setCalendarVisibility((prev) => !prev);
+	};
+
+	const selectDate = (date: string[]) => setSelectedDate(date);
+
 	return (
 		<ContainerLayout isPB>
 			<div className='flex flex-col gap-5'>
-				<div className='flex items-stretch gap-5 font-inter'>
+				<div className='flex items-stretch gap-5 font-inter relative'>
 					<div className='flex-1 bg-white rounded-md'></div>
-					<div className='flex flex-col items-center bg-yellow text-primary-200 px-3 py-1.5 rounded-md'>
-						<div className='flex-1 px-3 py-1 text-6xl font-medium'>16</div>
-						<span className='uppercase tracking-wide'>september</span>
-					</div>
+					<button
+						type='button'
+						onClick={toggleCalenderVisibility}
+						className='flex flex-col items-center bg-yellow text-primary-200 px-3 py-1.5 rounded-md '
+					>
+						<div className='flex-1 px-3 py-1 text-6xl font-medium'>
+							{selectedDate[1]}
+						</div>
+						<span className='uppercase tracking-wide'>{selectedDate[0]}</span>
+					</button>
+					{calenderVisibility && <Calendar callback={selectDate} />}
 				</div>
 				<div className='flex items-stretch gap-5'>
 					<div className='flex flex-col gap-1 tracking-wide px-3 py-1.5 rounded-md bg-white w-36'>

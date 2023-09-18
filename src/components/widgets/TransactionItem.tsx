@@ -6,8 +6,8 @@ type Props = {
 	timestamp: string;
 	reason: 'expense' | 'income';
 	cost: number;
-	openWidget: boolean;
-	handleWidgetModal: ButtonClickHandler;
+	openWidget?: boolean;
+	handleWidgetModal?: ButtonClickHandler;
 	// deleteExpense: ButtonClickHandler;
 };
 
