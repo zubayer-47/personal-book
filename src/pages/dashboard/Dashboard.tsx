@@ -30,7 +30,7 @@ const Dashboard = () => {
 					<button
 						type='button'
 						onClick={toggleCalenderVisibility}
-						onBlur={toggleCalenderVisibility}
+						// onBlur={toggleCalenderVisibility}
 						className='flex flex-col items-center bg-yellow text-primary-200 px-3 py-1.5 rounded-md '
 					>
 						<div className='flex-1 px-3 py-1 text-6xl font-medium'>

@@ -29,10 +29,12 @@ active::before {
     position: relative;
 }
 
-.bar-height:hover::before {
+.bar-height::before {
     content: var(--bar-hover-content);
+    height: auto;
     position: absolute;
-    bottom: -1.5rem;
+    top: -.5rem;
     left: 55%;
     transform: translate(-50%, -50%);
+    color: #222;
 }
