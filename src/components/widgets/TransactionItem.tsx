@@ -8,6 +8,7 @@ type Props = {
 	cost: number;
 	openWidget?: boolean;
 	handleWidgetModal?: ButtonClickHandler;
+	onClose?: () => void;
 	// deleteExpense: ButtonClickHandler;
 };
 
@@ -18,6 +19,7 @@ const TransactionItem = ({
 	cost,
 	openWidget,
 	handleWidgetModal,
+	onClose,
 }: // deleteExpense,
 Props) => {
 	return (
@@ -34,7 +36,7 @@ Props) => {
 				>
 					{cost}Tk
 				</div>
-				<button type='button' onClick={handleWidgetModal}>
+				<button type='button' onClick={handleWidgetModal} onBlur={onClose}>
 					<FiMoreVertical className='w-5 h-5 text-slate-400' />
 				</button>
 

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --bar-height-var: 0px !important;
+    --bar-hover-content: "0%";
+}
+
 .active {
     position: relative;
 }
@@ -17,4 +22,17 @@ active::before {
     border-left: .5rem solid transparent;
     border-right: .5rem solid transparent;
     border-bottom: .5rem solid #e3eef9;
+}
+
+.bar-height {
+    height: var(--bar-height-var);
+    position: relative;
+}
+
+.bar-height:hover::before {
+    content: var(--bar-hover-content);
+    position: absolute;
+    bottom: -1.5rem;
+    left: 55%;
+    transform: translate(-50%, -50%);
 }

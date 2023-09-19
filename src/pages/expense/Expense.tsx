@@ -75,6 +75,7 @@ const Expense = () => {
 							reason={expense.reason}
 							cost={expense.cost}
 							openWidget={expenseId === expense.id}
+							onClose={() => handleWidgetModal(expense.id)}
 							handleWidgetModal={() => handleWidgetModal(expense.id)}
 							// deleteExpense={() => deleteExpense(expense.id)}
 						/>
@@ -103,6 +104,7 @@ const Expense = () => {
 							reason={expense.reason}
 							cost={expense.cost}
 							openWidget={expenseId === expense.id}
+							onClose={() => handleWidgetModal(expense.id)}
 							handleWidgetModal={() => handleWidgetModal(expense.id)}
 						/>
 					))}

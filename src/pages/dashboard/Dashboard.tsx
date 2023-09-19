@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ContainerLayout from '../../components/Layouts/ContainerLayout';
 import Calendar from '../../components/Modal/Calendar';
+import BarChart from '../../components/graphs/BarChart';
 import ScheduleItem from '../../components/widgets/ScheduleItem';
 import SectionLabel from '../../components/widgets/SectionLabel';
 import TransactionItem from '../../components/widgets/TransactionItem';
@@ -29,6 +30,7 @@ const Dashboard = () => {
 					<button
 						type='button'
 						onClick={toggleCalenderVisibility}
+						onBlur={toggleCalenderVisibility}
 						className='flex flex-col items-center bg-yellow text-primary-200 px-3 py-1.5 rounded-md '
 					>
 						<div className='flex-1 px-3 py-1 text-6xl font-medium'>
@@ -47,7 +49,9 @@ const Dashboard = () => {
 						<div className='font-bold text-2xl text-primary-100'>2973TK</div>
 						<div className='text-sm text-slate-400'>This Month</div>
 					</div>
-					<div className='flex-1 bg-white rounded-md'></div>
+					<div className='flex-1 h-full bg-white rounded-md overflow-hidden'>
+						<BarChart />
+					</div>
 				</div>
 			</div>
 
