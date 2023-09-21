@@ -5,7 +5,7 @@ import ContainerLayout from '../../components/Layouts/ContainerLayout';
 
 const Notes = () => {
 	return (
-		<ContainerLayout>
+		<ContainerLayout isPB>
 			<div className='flex items-stretch gap-3'>
 				<Button title='New Note' />
 				<Input

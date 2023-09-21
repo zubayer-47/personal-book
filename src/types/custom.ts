@@ -7,3 +7,18 @@ export type ButtonClickHandler = React.MouseEventHandler<HTMLButtonElement>;
 export type FormHandler = React.FormEventHandler<HTMLFormElement>;
 export type BooleanSetStateType = React.Dispatch<React.SetStateAction<boolean>>;
 export type TextAreaHandler = React.ChangeEventHandler<HTMLTextAreaElement>;
+
+export const months = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December',
+];
