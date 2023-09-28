@@ -43,14 +43,14 @@ const Bar: FC<BarProps> = ({ day, parentRef, percentage }) => {
 		console.log({ parentHeight, dayHeight });
 
 		dayEl.classList.add('bar-height');
-		dayEl.style.setProperty('--bar-height-var', `${dayHeight}px`);
+		dayEl.style.setProperty('--bar-height-var', `${dayHeight / 16}rem`);
 
 		dayEl.style.color = '#fff';
 	}, [parentRef, percentage]);
 
 	return (
 		<div className='h-full flex flex-col justify-end items-center'>
-			<div className='w-4 bg-white h-full' ref={dayRef}></div>
+			<div className='w-4 bg-white' ref={dayRef}></div>
 			<span className='text-white text-sm'>{day}</span>
 		</div>
 	);

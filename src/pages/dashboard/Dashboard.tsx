@@ -33,7 +33,7 @@ const Dashboard = () => {
 	return (
 		<ContainerLayout isPB>
 			<div className='flex flex-col gap-5'>
-				<div className='flex items-stretch gap-5 font-inter relative'>
+				<div className='flex items-stretch gap-3 smd:gap-5 font-inter relative'>
 					<div className='flex-1 bg-white rounded-md'></div>
 					<button
 						type='button'
@@ -48,7 +48,7 @@ const Dashboard = () => {
 					</button>
 					{calenderVisibility && <Calendar callback={selectDate} />}
 				</div>
-				<div className='flex items-stretch gap-5'>
+				<div className='flex items-stretch gap-3 smd:gap-5'>
 					<div className='flex flex-col gap-1 tracking-wide px-3 py-1.5 rounded-md bg-white w-36'>
 						<div className='flex items-center justify-between'>
 							<span className='text-primary-200 font-inter'>Expense</span>
@@ -57,7 +57,7 @@ const Dashboard = () => {
 						<div className='font-bold text-2xl text-primary-100'>2973TK</div>
 						<div className='text-sm text-slate-400'>This Month</div>
 					</div>
-					<div className='flex-1 bg-primary-200 px-5 rounded-md'>
+					<div className='flex-1 overflow-hidden bg-primary-200 px-5 rounded-md'>
 						<BarChart />
 					</div>
 				</div>
