@@ -6,6 +6,7 @@ import ScheduleItem from '../../components/widgets/ScheduleItem';
 import SectionLabel from '../../components/widgets/SectionLabel';
 import TransactionItem from '../../components/widgets/TransactionItem';
 import { months } from '../../types/custom';
+import { expenseArr } from '../expense/Expense';
 
 const date = new Date();
 
@@ -15,6 +16,13 @@ const Dashboard = () => {
 		months[date.getMonth()],
 		date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`,
 	]);
+	const [expenseId, setExpenseId] = useState('');
+
+	const handleWidgetModal = (id: string) => {
+		if (id === expenseId) return setExpenseId('');
+
+		setExpenseId(id);
+	};
 
 	const toggleCalenderVisibility = () => {
 		setCalendarVisibility((prev) => !prev);
@@ -49,7 +57,7 @@ const Dashboard = () => {
 						<div className='font-bold text-2xl text-primary-100'>2973TK</div>
 						<div className='text-sm text-slate-400'>This Month</div>
 					</div>
-					<div className='flex-1 h-full bg-white rounded-md overflow-hidden'>
+					<div className='flex-1 bg-primary-200 px-5 rounded-md'>
 						<BarChart />
 					</div>
 				</div>
@@ -61,26 +69,27 @@ const Dashboard = () => {
 				<ScheduleItem title='Next Gen' timestamp='2h:03m:23s' />
 			</div>
 
-			<SectionLabel title='Transection' link='/expenses' linkTitle='See More' />
+			<SectionLabel title='Transaction' link='/expenses' linkTitle='See More' />
 			<div className='flex flex-col gap-2'>
-				<TransactionItem
+				{/* <TransactionItem
 					title='Buy Coffie'
 					timestamp='2 minutes ago'
 					reason='expense'
 					cost={360}
-				/>
-				<TransactionItem
-					title='Buy Coffie'
-					timestamp='2 minutes ago'
-					reason='expense'
-					cost={360}
-				/>
-				<TransactionItem
-					title='Sellary'
-					timestamp='45 minutes ago'
-					reason='income'
-					cost={25000}
-				/>
+				/> */}
+				{expenseArr.slice(0, 4).map((expense) => (
+					<TransactionItem
+						key={expense.id}
+						title={expense.title}
+						timestamp={expense.timestamp}
+						reason={expense.reason}
+						cost={expense.cost}
+						openWidget={expenseId === expense.id}
+						onClose={() => handleWidgetModal(expense.id)}
+						handleWidgetModal={() => handleWidgetModal(expense.id)}
+						// deleteExpense={() => deleteExpense(expense.id)}
+					/>
+				))}
 			</div>
 		</ContainerLayout>
 	);

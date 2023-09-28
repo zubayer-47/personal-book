@@ -4,7 +4,6 @@
 
 :root {
     --bar-height-var: 0px !important;
-    --bar-hover-content: "0%";
 }
 
 .active {
@@ -27,14 +26,4 @@ active::before {
 .bar-height {
     height: var(--bar-height-var);
     position: relative;
-}
-
-.bar-height::before {
-    content: var(--bar-hover-content);
-    height: auto;
-    position: absolute;
-    top: -.5rem;
-    left: 55%;
-    transform: translate(-50%, -50%);
-    color: #222;
 }

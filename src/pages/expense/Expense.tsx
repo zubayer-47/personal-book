@@ -18,7 +18,7 @@ type ExpenseDemoType = {
 	cost: number;
 };
 
-const expenseArr: ExpenseDemoType[] = [
+export const expenseArr: ExpenseDemoType[] = [
 	{
 		id: uuid(),
 		title: 'Buy Coffee',
@@ -37,7 +37,7 @@ const expenseArr: ExpenseDemoType[] = [
 		id: uuid(),
 		title: 'Buy Coffee',
 		timestamp: '2 minutes ago',
-		reason: 'expense',
+		reason: 'income',
 		cost: 360,
 	},
 ];
@@ -72,7 +72,7 @@ const Expense = () => {
 							key={expense.id}
 							title={expense.title}
 							timestamp={expense.timestamp}
-							reason={expense.reason}
+							reason='expense'
 							cost={expense.cost}
 							openWidget={expenseId === expense.id}
 							onClose={() => handleWidgetModal(expense.id)}
@@ -101,7 +101,7 @@ const Expense = () => {
 							key={expense.id}
 							title={expense.title}
 							timestamp={expense.timestamp}
-							reason={expense.reason}
+							reason='expense'
 							cost={expense.cost}
 							openWidget={expenseId === expense.id}
 							onClose={() => handleWidgetModal(expense.id)}
